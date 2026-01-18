@@ -97,8 +97,11 @@ function formatWeight(weight: number, unit: string): string {
             <OfferSearchForm :filters="filters" base-url="/offers/buy" />
 
             <Card>
-                <CardHeader>
+                <CardHeader class="flex flex-row items-center justify-between">
                     <CardTitle class="text-xl">Buy Offers</CardTitle>
+                    <Button as-child>
+                        <Link href="/offers/buy/create">Create Offer</Link>
+                    </Button>
                 </CardHeader>
                 <CardContent>
                     <div class="overflow-x-auto">
