@@ -22,6 +22,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'reddit_id',
+        'reddit_username',
+        'reddit_token',
+        'reddit_refresh_token',
     ];
 
     /**
@@ -34,6 +38,8 @@ class User extends Authenticatable
         'two_factor_secret',
         'two_factor_recovery_codes',
         'remember_token',
+        'reddit_token',
+        'reddit_refresh_token',
     ];
 
     /**
