@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained(false);
+            $table->enum('type', ['buy', 'sell']);
+            $table->string('description');
+            $table->enum('metal', ['gold', 'silver', 'platinum']);
+            $table->decimal('weight', 10, 2);
+            $table->enum('weight_unit', ['oz', 'gram']);
             $table->timestamps();
         });
     }
