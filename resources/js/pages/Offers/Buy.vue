@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
 
+import OfferSearchForm from '@/components/OfferSearchForm.vue';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -43,8 +44,19 @@ interface PaginatedOffers {
     next_page_url: string | null;
 }
 
+interface Filters {
+    metal: string;
+    weight: string;
+    gtlt: string;
+    units: string;
+    orderby: string;
+    direction: string;
+    keywords: string;
+}
+
 const props = defineProps<{
     offers: PaginatedOffers;
+    filters: Filters;
 }>();
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -82,6 +94,8 @@ function formatWeight(weight: number, unit: string): string {
 
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex h-full flex-1 flex-col gap-4 p-4">
+            <OfferSearchForm :filters="filters" base-url="/offers/buy" />
+
             <Card>
                 <CardHeader>
                     <CardTitle class="text-xl">Buy Offers</CardTitle>
