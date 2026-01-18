@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained(false);
+            $table->foreignId('user_id')->constrained();
             $table->enum('type', ['buy', 'sell']);
             $table->string('description');
             $table->enum('metal', ['gold', 'silver', 'platinum']);

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,16 @@ class OfferFactory extends Factory
      */
     public function definition(): array
     {
+        $metals = ['gold', 'silver', 'platinum'];
+        $metal = fake()->randomElement($metals);
+        
         return [
-            //
+            'user_id' => User::factory(),
+            'type' => fake()->randomElement(['buy', 'sell']),
+            'description' => fake()->sentence(),
+            'metal' => $metal,
+            'weight' => fake()->randomFloat(2, 0.1, 100),
+            'weight_unit' => fake()->randomElement(['oz', 'gram']),
         ];
     }
 }
